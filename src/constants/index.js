@@ -105,3 +105,21 @@ export const TOOLS = [
     ]
   }
 ]
+
+export const CONTACTS = [
+  {
+    icon: "/contacts/email-icon.webp",
+    label: "email",
+    value: "manalili123@gmail.com"
+  },
+  {
+    icon: "/contacts/github-icon.webp",
+    label: "github",
+    value: "https://github.com/renatomanalili"
+  },
+  {
+    icon: "/contacts/linkedin-icon.webp",
+    label: "linkedin",
+    value: "https://www.linkedin.com/in/renato-manalili-472147174/"
+  },
+]
