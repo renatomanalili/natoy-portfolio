@@ -26,12 +26,17 @@
     --color-text-muted: #64748b;
     --color-text-faint: #475569;
     --color-text-subtle: #334155;
+    --color-text-tab: #cbd5e1;
 
     /* Accents */
     --color-cyan: #22d3ee;
     --color-purple: #7c3aed;
     --color-amber: #f59e0b;
     --color-green: #10b981;
+    --color-close: #FF5F57;
+    --color-maximize: #FEBC2E;
+    --color-minimize: #28C840;
+
 }
 
 .btn-primary {
@@ -41,6 +46,28 @@
 .btn-secondary {
   @apply bg-border-default border border-text-subtle rounded-md flex items-center justify-center text-text-primary
 }
+
+.tab {
+  @apply flex items-center px-4 gap-2 text-text-faint font-mono text-xs h-10
+}
+
+.tab.active {
+  @apply border-t border-t-cyan border-b border-b-bg-base bg-bg-base text-text-tab
+}
+
+.tab.active .lucide-code-icon {
+  @apply text-cyan
+}
+
+ .tab-content {
+   @apply hidden px-5 py-4 pb-5
+ }
+
+ .tab-content.active {
+   @apply flex items-start gap-4
+ }
+
+
 
 body {
   background: var(--color-bg-card);

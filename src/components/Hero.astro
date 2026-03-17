@@ -1,5 +1,96 @@
 ---
+import { literal } from "astro:schema";
 import Badge from "./Badge.astro";
+const about = [
+  {
+    text: `const about = {`,
+    indent: "",
+  },
+  {
+    text: `"name:" "Renato Manalili"`,
+    indent: "ml-5",
+  },
+  {
+    text: `"email:" "renatomanalili.dev@gmail.com"`,
+    indent: "ml-5",
+  },
+  {
+    text: `"role:" "Full-Stack Developer"`,
+    indent: "ml-5",
+  },
+  {
+    text: `"location:" "Philippines"`,
+    indent: "ml-5",
+  },
+  {
+    text: `"available:" true`,
+    indent: "ml-5",
+  },
+  {
+    text: `"focus:" [`,
+    indent: "ml-5 text-cyan",
+  },
+  {
+    text: `"React",`,
+    indent: "ml-10 text-amber",
+  },
+  {
+    text: `"Vuejs",`,
+    indent: "ml-10 text-amber",
+  },
+  {
+    text: `"Supabase",`,
+    indent: "ml-10 text-amber",
+  },
+  {
+    text: `"Node.js",`,
+    indent: "ml-10 text-amber",
+  },
+  {
+    text: `"TypeScript",`,
+    indent: "ml-10 text-amber",
+  },
+  {
+    text: `],`,
+    indent: "ml-5 text-cyan",
+  },
+  {
+    text: `"currently_learning:" [`,
+    indent: "ml-5 text-cyan",
+  },
+  {
+    text: `"playwright",`,
+    indent: "ml-10 text-amber",
+  },
+  {
+    text: `],`,
+    indent: "ml-5 text-cyan",
+  },
+  {
+    text: `"open_to:" [`,
+    indent: "ml-5 text-cyan",
+  },
+  {
+    text: `"remote",`,
+    indent: "ml-10 text-amber",
+  },
+  {
+    text: `"freelance",`,
+    indent: "ml-10 text-amber",
+  },
+  {
+    text: `"full-time",`,
+    indent: "ml-10 text-amber",
+  },
+  {
+    text: `]`,
+    indent: "ml-5 text-cyan",
+  },
+  {
+    text: `}`,
+    indent: "",
+  },
+];
 ---
 
 <section
@@ -37,5 +128,103 @@ import Badge from "./Badge.astro";
       </div>
     </div>
   </div>
-  <img src="/hero.webp" alt="Hero Image" class="h-115 w-115" />
+  <div
+    class="bg-bg-base border border-border-default rounded-xl w-full max-w-2xl h-115 overflow-hidden pb-10"
+  >
+    <div
+      class="flex items-center w-full bg-bg-deep px-3.5 rounded-t-xl border-b border-border-default"
+    >
+      <div class="flex items-center justify-center h-10 gap-1.5">
+        <div class="h-2.5 w-2.5 bg-close rounded-full"></div>
+        <div class="h-2.5 w-2.5 bg-maximize rounded-full"></div>
+        <div class="h-2.5 w-2.5 bg-minimize rounded-full"></div>
+      </div>
+      <div class="tabs ml-3.5">
+        <div class="flex items-center" role="tablist">
+          <button class="tab active" role="tab" data-target="tab1"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-code-icon lucide-code"
+              ><path d="m16 18 6-6-6-6"></path><path d="m8 6-6 6 6 6"
+              ></path></svg
+            ><span>about.ts</span></button
+          >
+          <button class="tab" role="tab" data-target="tab2"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-code-icon lucide-code"
+              ><path d="m16 18 6-6-6-6"></path><path d="m8 6-6 6 6 6"
+              ></path></svg
+            ><span>skills.ts</span></button
+          >
+        </div>
+      </div>
+      <button
+        class="text-text-faint ml-auto cursor-pointer hover:text-text-faint/50 transition-colors"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-maximize2-icon lucide-maximize-2"
+          ><path d="M15 3h6v6"></path><path d="m21 3-7 7"></path><path
+            d="m3 21 7-7"></path><path d="M9 21H3v-6"></path></svg
+        ></button
+      >
+    </div>
+    <div
+      class="tab-content active overflow-y-scroll h-full"
+      id="tab1"
+    >
+      <ul class="text-text-subtle font-mono text-xs space-y-1">
+        {about.map((t, i) => <li>{i + 1}</li>)}
+      </ul>
+      <ul class="font-mono text-xs text-white space-y-1">
+        {
+          about.map((t) => (
+            <li class={t.indent}>
+              <span>{t.text}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="tab-content" id="tab2">Content 2</div>
+    <div class="tab-content" id="tab3">Content 3</div>
+  </div>
 </section>
+
+<script>
+  document.querySelectorAll(".tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      document
+        .querySelectorAll(".tab, .tab-content")
+        .forEach((el) => el.classList.remove("active"));
+      tab.classList.add("active");
+      document
+        .getElementById(tab.dataset.target)
+        .classList.add("active");
+    });
+  });
+</script>
