@@ -1,62 +1,5 @@
 ---
-import Badge from "./Badge.astro";
-
-const projects = [
-  {
-    num: "01",
-    title: "E-Commerce Platform",
-    description:
-      "Full-stack e-commerce solution with product catalog, cart, checkout flow, and order management. Sole engineer from architecture to deployment.",
-    stack: ["Nuxt.js", "Supabase", "TailwindCSS"],
-    images: ["/projects/ecommerce-1.png", "/projects/ecommerce-2.png", "/projects/ecommerce-3.png"],
-    link: null,
-  },
-  {
-    num: "02",
-    title: "Booking & Scheduling App",
-    description:
-      "Service booking platform with calendar management, availability slots, and automated email notifications for a local business client.",
-    stack: ["Next.js", "PostgreSQL", "Node.js"],
-    images: ["/projects/booking-1.png", "/projects/booking-2.png"],
-    link: null,
-  },
-  {
-    num: "03",
-    title: "SaaS Analytics Dashboard",
-    description:
-      "Multi-tenant dashboard with real-time data visualization, role-based access control, and CSV export for a B2B SaaS product.",
-    stack: ["Vue.js", "Node.js", "MongoDB"],
-    images: ["/projects/saas-1.png", "/projects/saas-2.png", "/projects/saas-3.png"],
-    link: null,
-  },
-  {
-    num: "04",
-    title: "Real Estate Listing App",
-    description:
-      "Cross-platform mobile app for property listings with map integration, filters, and agent contact flow. Published to both app stores.",
-    stack: ["React Native", "Firebase", "TypeScript"],
-    images: ["/projects/realestate-1.png", "/projects/realestate-2.png"],
-    link: null,
-  },
-  {
-    num: "05",
-    title: "Restaurant POS System",
-    description:
-      "Point-of-sale system for a restaurant chain with table management, order tracking, and end-of-day reporting.",
-    stack: ["Laravel", "PHP", "MySQL"],
-    images: ["/projects/pos-1.png", "/projects/pos-2.png"],
-    link: null,
-  },
-  {
-    num: "06",
-    title: "Developer Portfolio",
-    description:
-      "This site — a dark-themed developer portfolio built with Astro, featuring syntax-highlighted code cards and smooth tab interactions.",
-    stack: ["Astro.js", "TailwindCSS", "TypeScript"],
-    images: ["/projects/portfolio-1.png"],
-    link: "https://github.com/renatomanalili",
-  },
-];
+import { PROJECTS as projects } from "../constants/index.js";
 ---
 
 <div
@@ -66,28 +9,42 @@ const projects = [
   <div
     class="bg-bg-base border border-border-default rounded-xl w-full max-w-4xl mx-3 sm:mx-6 max-h-[90vh] flex flex-col overflow-hidden"
   >
-    <!-- Grid view -->
     <div id="modal-grid-view" class="flex flex-col overflow-hidden">
       <div
         class="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-border-default shrink-0"
       >
         <div class="flex flex-col gap-1">
-          <Badge label="selected_projects" />
-          <h2 class="text-xl font-bold text-text-primary">Things I've Built</h2>
-          <p class="text-xs text-text-muted">5 of 50+ delivered — most under NDA.</p>
+          <h2 class="text-xl font-bold text-text-primary">
+            Things I've Built
+          </h2>
+          <p class="text-xs text-text-muted">
+            5 of 50+ delivered — most under NDA.
+          </p>
         </div>
         <button
           id="close-projects-modal"
           class="text-text-faint hover:text-text-primary transition-colors cursor-pointer"
           aria-label="Close"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>
           </svg>
         </button>
       </div>
       <div class="overflow-y-auto p-4 sm:p-6">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
           {
             projects.map((p, i) => (
               <button
@@ -95,17 +52,38 @@ const projects = [
                 data-index={i}
               >
                 <div class="flex items-start justify-between">
-                  <span class="font-mono text-xs text-cyan">{p.num}</span>
+                  <span class="font-mono text-xs text-cyan">
+                    {p.num}
+                  </span>
                   {p.link ? (
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-text-faint">
-                      <path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-text-faint"
+                    >
+                      <path d="M15 3h6v6" />
+                      <path d="M10 14 21 3" />
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                     </svg>
                   ) : (
-                    <span class="font-mono text-[10px] text-text-faint border border-border-faint rounded px-1.5 py-0.5">NDA</span>
+                    <span class="font-mono text-[10px] text-text-faint border border-border-faint rounded px-1.5 py-0.5">
+                      NDA
+                    </span>
                   )}
                 </div>
-                <h3 class="font-bold text-sm text-text-primary">{p.title}</h3>
-                <p class="text-xs text-text-muted leading-relaxed flex-1">{p.description}</p>
+                <h3 class="font-bold text-sm text-text-primary">
+                  {p.title}
+                </h3>
+                <p class="text-xs text-text-muted leading-relaxed flex-1">
+                  {p.description}
+                </p>
                 <div class="flex flex-wrap gap-1.5 mt-1">
                   {p.stack.map((tag) => (
                     <span class="font-mono text-[11px] text-text-secondary bg-bg-dark border border-border-faint rounded px-2 py-0.5">
@@ -121,7 +99,11 @@ const projects = [
     </div>
 
     <!-- Detail view -->
-    <div id="modal-detail-view" class="flex-col overflow-hidden flex-1" style="display:none">
+    <div
+      id="modal-detail-view"
+      class="flex-col overflow-hidden flex-1"
+      style="display:none"
+    >
       <div
         class="flex items-center justify-between px-6 py-4 border-b border-border-default shrink-0"
       >
@@ -129,7 +111,17 @@ const projects = [
           id="back-to-grid"
           class="flex items-center gap-2 text-text-faint hover:text-text-primary transition-colors cursor-pointer text-sm"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <path d="m15 18-6-6 6-6"></path>
           </svg>
           All Projects
@@ -139,22 +131,54 @@ const projects = [
           class="text-text-faint hover:text-text-primary transition-colors cursor-pointer"
           aria-label="Close"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>
           </svg>
         </button>
       </div>
 
-      <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 p-4 sm:p-6 overflow-y-auto flex-1">
+      <div
+        class="flex flex-col lg:flex-row gap-6 lg:gap-8 p-4 sm:p-6 overflow-y-auto flex-1"
+      >
         <!-- Carousel -->
-        <div class="flex flex-col gap-3 w-full lg:w-[55%] lg:shrink-0">
-          <div class="relative bg-bg-deep border border-border-default rounded-xl overflow-hidden aspect-video flex items-center justify-center">
-            <img id="carousel-img" src="" alt="" class="w-full h-full object-cover" />
+        <div
+          id="carousel-image-container"
+          class="flex flex-col gap-3 w-full lg:w-[55%] lg:shrink-0"
+        >
+          <div
+            class="relative bg-bg-deep border border-border-default rounded-xl overflow-hidden aspect-video flex items-center justify-center"
+          >
+            <img
+              id="carousel-img"
+              src=""
+              alt=""
+              class="w-full h-full object-cover"
+            />
             <button
               id="carousel-prev"
               class="absolute left-3 top-1/2 -translate-y-1/2 bg-bg-base/80 hover:bg-bg-base border border-border-default rounded-lg p-1.5 text-text-secondary hover:text-text-primary transition-colors"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <path d="m15 18-6-6 6-6"></path>
               </svg>
             </button>
@@ -162,19 +186,42 @@ const projects = [
               id="carousel-next"
               class="absolute right-3 top-1/2 -translate-y-1/2 bg-bg-base/80 hover:bg-bg-base border border-border-default rounded-lg p-1.5 text-text-secondary hover:text-text-primary transition-colors"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <path d="m9 18 6-6-6-6"></path>
               </svg>
             </button>
           </div>
-          <div id="carousel-dots" class="flex items-center justify-center gap-1.5"></div>
+          <div
+            id="carousel-dots"
+            class="flex items-center justify-center gap-1.5"
+          >
+          </div>
         </div>
 
         <!-- Project info -->
         <div class="flex flex-col gap-4 flex-1">
-          <span id="detail-num" class="font-mono text-xs text-cyan"></span>
-          <h3 id="detail-title" class="text-xl font-bold text-text-primary"></h3>
-          <p id="detail-desc" class="text-sm text-text-muted leading-relaxed"></p>
+          <span id="detail-num" class="font-mono text-xs text-cyan"
+          ></span>
+          <h3
+            id="detail-title"
+            class="text-xl font-bold text-text-primary"
+          >
+          </h3>
+          <p
+            id="detail-desc"
+            class="text-sm text-text-muted leading-relaxed"
+          >
+          </p>
           <div id="detail-stack" class="flex flex-wrap gap-1.5"></div>
           <a
             id="detail-link"
@@ -185,8 +232,21 @@ const projects = [
             style="display:none"
           >
             View Project
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M15 3h6v6"></path><path d="M10 14 21 3"
+              ></path><path
+                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+              ></path>
             </svg>
           </a>
         </div>
@@ -199,12 +259,17 @@ const projects = [
   const modal = document.getElementById("projects-modal");
   const openBtn = document.getElementById("open-projects-modal");
   const closeBtn = document.getElementById("close-projects-modal");
-  const closeFromDetail = document.getElementById("close-from-detail");
+  const closeFromDetail = document.getElementById(
+    "close-from-detail",
+  );
   const gridView = document.getElementById("modal-grid-view");
   const detailView = document.getElementById("modal-detail-view");
   const backBtn = document.getElementById("back-to-grid");
 
   // Carousel elements
+  const carouselContainer = document.getElementById(
+    "carousel-image-container",
+  );
   const carouselImg = document.getElementById("carousel-img");
   const carouselDots = document.getElementById("carousel-dots");
   const prevBtn = document.getElementById("carousel-prev");
@@ -248,7 +313,7 @@ const projects = [
     detailStack.innerHTML = p.stack
       .map(
         (tag) =>
-          `<span class="font-mono text-[11px] text-text-secondary bg-bg-dark border border-border-faint rounded px-2 py-0.5">${tag}</span>`
+          `<span class="font-mono text-[11px] text-text-secondary bg-bg-dark border border-border-faint rounded px-2 py-0.5">${tag}</span>`,
       )
       .join("");
 
@@ -259,7 +324,14 @@ const projects = [
       detailLink.style.display = "none";
     }
 
-    renderCarousel();
+    if (p.images.length === 0) {
+      carouselContainer.style.display = "none";
+      prevBtn.style.display = "none";
+      nextBtn.style.display = "none";
+      carouselDots.innerHTML = "";
+    } else {
+      renderCarousel();
+    }
 
     gridView.style.display = "none";
     detailView.style.display = "flex";
@@ -272,7 +344,7 @@ const projects = [
     carouselDots.innerHTML = currentImages
       .map(
         (_, i) =>
-          `<button class="carousel-dot w-2 h-2 rounded-full transition-colors ${i === currentIndex ? "bg-cyan" : "bg-border-strong"}" data-dot="${i}"></button>`
+          `<button class="carousel-dot w-2 h-2 rounded-full transition-colors ${i === currentIndex ? "bg-cyan" : "bg-border-strong"}" data-dot="${i}"></button>`,
       )
       .join("");
 
@@ -288,7 +360,9 @@ const projects = [
   };
 
   prevBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    currentIndex =
+      (currentIndex - 1 + currentImages.length) %
+      currentImages.length;
     renderCarousel();
   });
 
@@ -298,7 +372,9 @@ const projects = [
   });
 
   document.querySelectorAll(".project-card").forEach((card) => {
-    card.addEventListener("click", () => showDetail(Number(card.dataset.index)));
+    card.addEventListener("click", () =>
+      showDetail(Number(card.dataset.index)),
+    );
   });
 
   openBtn?.addEventListener("click", openModal);
@@ -314,7 +390,9 @@ const projects = [
     if (e.key === "Escape") closeModal();
     if (e.key === "ArrowLeft") {
       if (!detailView.classList.contains("hidden")) {
-        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        currentIndex =
+          (currentIndex - 1 + currentImages.length) %
+          currentImages.length;
         renderCarousel();
       }
     }
